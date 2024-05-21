@@ -16,8 +16,8 @@ class ProdukController extends Controller
     public function index()
     {
         return view('produk.index')->with([
-            'produk' => produk::all(),
-            'kategori' => kategori::all(),
+            'produk' => Produk::all(),
+            'kategori' => Kategori::all(),
         ]);
     }
 
@@ -28,8 +28,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        $produk = produk::all();
-        $kategori = kategori::all();
+        $produk = Produk::all();
+        $kategori = Kategori::all();
         return view('produk.t_produk', compact(['produk', 'kategori']));
     }
 
@@ -94,9 +94,9 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        $kategori = kategori::all();
+        $kategori = Kategori::all();
         return view('produk.e_produk', compact(['kategori']))->with([
-            'produk' => produk::find($id),
+            'produk' => Produk::find($id),
         ]);
     }
 

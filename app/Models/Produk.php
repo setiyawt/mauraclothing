@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Produk extends Model
 {
     use HasFactory;
-    protected $table = 'Produk';
+    protected $table = 'produk';
     protected $guarded = ['id'];
 
     public function class()
     {
-        return $this->belongsTo(Kategori::class,'category_id','id');
+        return $this->belongsTo(Kategori::class, 'category_id', 'id');
     }
 }
 
