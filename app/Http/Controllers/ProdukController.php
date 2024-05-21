@@ -16,8 +16,8 @@ class ProdukController extends Controller
     public function index()
     {
         return view('produk.index')->with([
-            'produk' => Produk::all(),
-            'kategori' => Kategori::all(),
+            'produk' => produk::all(),
+            'kategori' => kategori::all(),
         ]);
     }
 
@@ -28,9 +28,9 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        $produk = Produk::all();
-        $kategori = Kategori::all();
-        return view('produk.t_produk',compact(['produk','kategori']));
+        $produk = produk::all();
+        $kategori = kategori::all();
+        return view('produk.t_produk', compact(['produk', 'kategori']));
     }
 
     /**
@@ -48,7 +48,7 @@ class ProdukController extends Controller
             'product_description' => 'required',
             'product_image' => 'required|mimes:jpeg,jpg,png,gif',
             'product_status' => 'required',
-        ],[
+        ], [
             'category_id.required' => 'Jenis Kategori Harus Dipilih!',
             'product_name.required' => 'Nama Produk Harus Diisi!',
             'product_price.required' => 'Harga Produk Harus Diisi!',
@@ -72,7 +72,7 @@ class ProdukController extends Controller
         $produk->product_status = $request->product_status;
         $produk->save();
 
-        return to_route('produk.index')->with('success','Data Berhasil di Tambah.');
+        return to_route('produk.index')->with('success', 'Data Berhasil di Tambah.');
     }
 
     /**
@@ -94,10 +94,10 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        $kategori = Kategori::all();
-        return view('produk.e_produk',compact(['kategori']))->with([
-            'produk' => Produk::find($id),
-         ]);
+        $kategori = kategori::all();
+        return view('produk.e_produk', compact(['kategori']))->with([
+            'produk' => produk::find($id),
+        ]);
     }
 
     /**
@@ -115,7 +115,7 @@ class ProdukController extends Controller
             'product_price' => 'required',
             'product_description' => 'required',
             'product_status' => 'required',
-        ],[
+        ], [
             'category_id.required' => 'Jenis Kategori Harus Dipilih!',
             'product_name.required' => 'Nama Produk Harus Diisi!',
             'product_price.required' => 'Harga Produk Harus Diisi!',
@@ -126,7 +126,7 @@ class ProdukController extends Controller
         if ($request->hasFile('product_image')) {
             $request->validate([
                 'product_image' => 'mimes:jpeg,jpg,png,gif',
-            ],[
+            ], [
                 'product_image.mimes' => 'Tipe Gambar Harus Berupa jpeg,jpg,png,gif'
             ]);
 
@@ -149,7 +149,7 @@ class ProdukController extends Controller
         $produk->product_status = $request->product_status;
         $produk->save();
 
-        return to_route('produk.index')->with('success','Data Berhasil di Edit.');
+        return to_route('produk.index')->with('success', 'Data Berhasil di Edit.');
     }
 
     /**
@@ -163,6 +163,6 @@ class ProdukController extends Controller
         $produk = Produk::find($id);
         $produk->delete();
 
-        return back()->with('success','Data Berhasil di Hapus!.');
+        return back()->with('success', 'Data Berhasil di Hapus!.');
     }
 }

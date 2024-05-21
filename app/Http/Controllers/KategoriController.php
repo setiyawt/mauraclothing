@@ -41,7 +41,7 @@ class KategoriController extends Controller
         $request->validate([
             'category_name' => 'required',
             'category_image' => 'mimes:jpeg,jpg,png,gif'
-        ],[
+        ], [
             'category_name.required' => 'Nama Kategori Harus diisi!',
             'category_image.mimes' => 'Foto harus dalam format jpeg,jpg,png,gif!'
         ]);
@@ -56,7 +56,7 @@ class KategoriController extends Controller
         $kategori->category_image = $foto_nama;
         $kategori->save();
 
-        return to_route('kategori.index')->with('success','Data Berhasil di Tambah.');
+        return to_route('kategori.index')->with('success', 'Data Berhasil di Tambah.');
     }
 
     /**
@@ -79,7 +79,7 @@ class KategoriController extends Controller
     public function edit($id)
     {
         return view('kategori.e_kategori')->with([
-           'kategori' => Kategori::find($id)
+            'kategori' => Kategori::find($id)
         ]);
     }
 
@@ -94,14 +94,14 @@ class KategoriController extends Controller
     {
         $request->validate([
             'category_name' => 'required',
-        ],[
+        ], [
             'category_name.required' => 'Nama Kategori tidak boleh menjadi kosong!',
         ]);
 
         if ($request->hasFile('category_image')) {
             $request->validate([
                 'category_image' => 'mimes:jpeg,jpg,png,gif',
-            ],[
+            ], [
                 'category_image.mimes' => 'Foto harus dalam format jpeg,jpg,png,gif!'
             ]);
 
@@ -120,7 +120,7 @@ class KategoriController extends Controller
         $kategori->category_name = $request->category_name;
         $kategori->save();
 
-        return to_route('kategori.index')->with('success','Data Berhasil di Edit.');
+        return to_route('kategori.index')->with('success', 'Data Berhasil di Edit.');
     }
 
     /**
@@ -134,6 +134,6 @@ class KategoriController extends Controller
         $kategori = Kategori::find($id);
         $kategori->delete();
 
-        return back()->with('success','Data Berhasil di Hapus!.');
+        return back()->with('success', 'Data Berhasil di Hapus!.');
     }
 }
