@@ -46,6 +46,7 @@ class ProdukController extends Controller
             'product_name' => 'required',
             'product_price' => 'required',
             'product_description' => 'required',
+            'product_link' => 'required',
             'product_image' => 'required|mimes:jpeg,jpg,png,gif',
             'product_status' => 'required',
         ], [
@@ -53,6 +54,7 @@ class ProdukController extends Controller
             'product_name.required' => 'Nama Produk Harus Diisi!',
             'product_price.required' => 'Harga Produk Harus Diisi!',
             'product_description.required' => 'Deskripsi Produk Harus Diisi!',
+            'product_link.required' => 'Link Produk Harus Diisi!',
             'product_image.required' => 'Gambar Produk Harus Diisi!',
             'product_status.required' => 'Status Produk Harus Diisi!',
             'product_image.mimes' => 'Tipe Gambar Harus Berupa jpeg,jpg,png,gif'
@@ -68,6 +70,7 @@ class ProdukController extends Controller
         $produk->product_name = $request->product_name;
         $produk->product_price = $request->product_price;
         $produk->product_description = $request->product_description;
+        $produk->product_link = $request->product_link;
         $produk->product_image = $foto_nama;
         $produk->product_status = $request->product_status;
         $produk->save();
@@ -115,11 +118,14 @@ class ProdukController extends Controller
             'product_price' => 'required',
             'product_description' => 'required',
             'product_status' => 'required',
+            'product_status' => 'required',
         ], [
             'category_id.required' => 'Jenis Kategori Harus Dipilih!',
             'product_name.required' => 'Nama Produk Harus Diisi!',
             'product_price.required' => 'Harga Produk Harus Diisi!',
             'product_description.required' => 'Deskripsi Produk Harus Diisi!',
+            'product_link.required' => 'Link Produk Harus Diisi!',
+            'product_image.required' => 'Gambar Produk Harus Diisi!',
             'product_status.required' => 'Status Produk Harus Diisi!',
         ]);
 
@@ -146,6 +152,7 @@ class ProdukController extends Controller
         $produk->product_name = $request->product_name;
         $produk->product_price = $request->product_price;
         $produk->product_description = $request->product_description;
+        $produk->product_link = $request->product_link;
         $produk->product_status = $request->product_status;
         $produk->save();
 

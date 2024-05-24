@@ -52,6 +52,25 @@ class loginController extends Controller
 
     public function aksiregister(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required|string|unique:users',
+            'telepon' => 'required|string|unique:users',
+            'alamat' => 'required',
+            'password' => 'required',
+            'email' => 'required|string|unique:users',
+            'image' => 'required',
+        ], [
+            'name.required' => 'Nama tidak boleh kosong!',
+            'username.required' => 'Username tidak boleh kosong!',
+            'telepon.required' => 'No. Hp tidak boleh kosong!',
+            'alamat.required' => 'Alamat tidak boleh kosong!',
+            'password.required' => 'Password tidak boleh kosong!',
+            'email.required' => 'Email tidak boleh kosong!',
+
+        ]);
+
+
 
         $foto_file = $request->file('image');
         $foto_ekstensi = $foto_file->extension();
@@ -66,7 +85,7 @@ class loginController extends Controller
             'password' => Hash::make($request->password),
             'email' => $request->email,
             'image' => $foto_nama,
-            'role' => $request->role == '2' ? '2' : '2',
+            'role' => '2',
             //'email_verified_at' => $request->email_verified_at,
         ]);
         return view('index');
