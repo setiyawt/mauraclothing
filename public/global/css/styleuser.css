@@ -821,6 +821,10 @@ h5 {
     #form-details form {
         width: 50%;
     }
+
+    .user {
+        padding-bottom: 25px;
+    }
 }
 
 /* About */

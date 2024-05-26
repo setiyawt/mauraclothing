@@ -13,9 +13,9 @@
 <br>
 
 <section id="product1" class="section-p1">
-    <h2>Produk Terkait</h2>
+    <h2>Kategori Produk</h2>
     <p>Segera miliki koleksi terbaru dari Maura Clothing</p>
-    @include('site.produk')
+    @include('site.kategori')
 
 </section>
 

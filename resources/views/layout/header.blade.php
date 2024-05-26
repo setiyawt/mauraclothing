@@ -16,10 +16,10 @@
                 <a href="/profileuser/{{ auth()->user()->id }}"><img src="{{ asset('global/user') }}/{{ auth()->user()->image }}" width="40px" height="40px" style="border-radius: 100%;display:inline-block;"></a>
             </li>
             <div class="dropdown">
-                <li style="padding:25px 0px 0px 0px;">
+                <li style="padding:0px 20px 0px 0px;">
                     <a href="/profileuser/{{ auth()->user()->id }}">{{ auth()->user()->name }}</a>
                 </li>
-                <li></li>
+
                 <div class="dropdown-content" style="background-color: #fff;">
                     <a href="/profileuser/{{ auth()->user()->id }}">Profil</a>
                     <a href="{{ route('logout') }}">Keluar</a>
