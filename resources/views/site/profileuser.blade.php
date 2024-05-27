@@ -28,7 +28,7 @@
                 <input type="text" name="telepon" class="input-control" style="width: 100%;" value="&ensp;{{auth()->user()->telepon}}">
                 <br>
                 <h5 style="display:inline-block;">Email</h5><br>
-                <input type="email" name="email" class="input-control" style="width: 100%;" value="{{auth()->user()->email}}">
+                <input type="email" name="email" class="input-control" style="width: 100%; padding-left: 10px" value="{{auth()->user()->email}}">
                 <br>
                 <h5 style="display:inline-block;">Alamat</h5><br>
                 <input type="text" name="alamat" class="input-control" style="width: 100%;" value="&ensp;{{auth()->user()->alamat}}">
@@ -48,15 +48,15 @@
                 @csrf
                 <h5 style="display:inline-block;">Password Lama</h5>
                 <br>
-                <input type="password" name="current_pw" class="input-control" style="width:100%">
+                <input type="text" name="current_pw" class="input-control" style="width:100%; padding-left: 20px">
                 <br>
                 <h5 style="display:inline-block;">Password Baru</h5>
                 <br>
-                <input type="password" name="password" class="input-control" style="width:100%">
+                <input type="text" name="password" class="input-control" style="width:100%; padding-left: 20px">
                 <br>
                 <h5 style="display:inline-block;">Konfirmasi Password Baru</h5>
                 <br>
-                <input type="password" name="confirmpw" class="input-control" style="width:100%">
+                <input type="text" name="confirmpw" class="input-control" style="width:100%; padding-left: 20px">
                 <br><input type="submit" name="submit" value="Ubah Password" class="btn-tambah" style="background-color:#fab2d3;">
             </form>
         </div>

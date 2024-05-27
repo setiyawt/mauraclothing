@@ -8,11 +8,9 @@
 </section>
 
 <section id="product1" class="section-p1">
-    <h2>Produk Terkait</h2>
+    <h2>Kategori Terkait</h2>
     <p>Produk terbaru di bulan Juni</p>
-    @include('site.produk')
+    @include('site.produk_by_kategori')'
 </section>
-
-
 
 @endsection

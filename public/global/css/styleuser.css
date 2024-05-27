@@ -417,13 +417,14 @@ input[type="password"] {
 
 #product1 .pro-container {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     padding-top: 20px;
     flex-wrap: wrap;
 }
 
 #product1 .pro {
-    width: 23%;
+    width: 300px;
     min-width: 250px;
     padding: 10px 12px;
     border: 1px solid #cce7d0;
@@ -433,6 +434,8 @@ input[type="password"] {
     margin: 15px 0;
     transition: 0.2s ease;
     position: relative;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 #product1 .pro:hover {
@@ -561,7 +564,7 @@ input[type="password"] {
 
 #newsletter .form {
     display: flex;
-    width: 40%;
+    width: 100%;
 }
 
 #newsletter input {
@@ -1025,24 +1028,6 @@ h5 {
 #page-header h2,
 #page-header p {
     color: #272727;
-}
-
-#pagination {
-    text-align: center;
-}
-
-#pagination a {
-    text-decoration: none;
-    background-color: #fab2d3;
-    padding: 15px 20px;
-    border-radius: 4px;
-    color: #272727;
-    font-weight: 600;
-}
-
-#pagination a i {
-    font-size: 16px;
-    font-weight: 600;
 }
 
 /* Single Product */

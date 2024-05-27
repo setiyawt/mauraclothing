@@ -33,13 +33,23 @@ class LandingController extends Controller
     {
         return view('site.shop')->with([
             'produk' => Produk::all(),
-         ]);;
+        ]);;
     }
+
+    public function shop_by_kategori($category_id)
+    {
+        $produk = Produk::where('category_id', $category_id)->get();
+        return view('site.shop_by_kategori', [
+            'produk' => $produk,
+            'category_id' => $category_id
+        ]);
+    }
+
 
     public function kshop($id)
     {
         $produk = Produk::find($id);
-        return view('site.detail',compact(['produk']));
+        return view('site.detail', compact(['produk']));
     }
 
     public function dashboard()
@@ -50,36 +60,36 @@ class LandingController extends Controller
     public function profil()
     {
         $user = auth()->user()->id;
-        return view('admin.profile',compact(['user']));
+        return view('admin.profile', compact(['user']));
     }
 
     public function profilU()
     {
         $user = auth()->user()->id;
-        return view('site.profileuser',compact(['user']));
+        return view('site.profileuser', compact(['user']));
     }
 
     public function dataAdmin()
     {
         $user = User::all();
-        return view('admin.index',compact(['user']));
+        return view('admin.index', compact(['user']));
     }
 
 
     public function edit_aView($id)
     {
         $user = User::find($id);
-        return view('admin.e_admin',compact(['user']));
+        return view('admin.e_admin', compact(['user']));
     }
 
-    public function editAdmin(Request $request,$id)
+    public function editAdmin(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
             'telepon' => 'required',
             'alamat' => 'required',
             'email' => 'required',
-        ],[
+        ], [
             'name.required' => 'Nama admin tidak boleh kosong!',
             'telepon.required' => 'Nomor telepon tidak boleh kosong!',
             'alamat.required' => 'Alamat admin tidak boleh kosong!',
@@ -104,7 +114,6 @@ class LandingController extends Controller
 
         $user = User::find($id);
         $user->name = $request->name;
-        $user->username = $request->username;
         $user->telepon = $request->telepon;
         $user->alamat = $request->alamat;
         $user->email = $request->email;
@@ -113,7 +122,8 @@ class LandingController extends Controller
         return redirect('admin')->with('success', 'Data Admin berhasil di edit');
     }
 
-    public function tambahAdmin(){
+    public function tambahAdmin()
+    {
         return view('admin.t_admin');
     }
 
@@ -147,10 +157,10 @@ class LandingController extends Controller
     public function dataUser()
     {
         $user = User::all();
-        return view('admin.user',compact(['user']));
+        return view('admin.user', compact(['user']));
     }
 
-    public function editProfil(Request $request,$id)
+    public function editProfil(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
@@ -158,7 +168,7 @@ class LandingController extends Controller
             'telepon' => 'required',
             'alamat' => 'required',
             'email' => 'required',
-        ],[
+        ], [
             'name.required' => 'Nama anda tidak boleh kosong!',
             'username.required' => 'Username anda tidak boleh kosong!',
             'telepon.required' => 'Nomor telepon anda tidak boleh kosong!',
@@ -193,7 +203,7 @@ class LandingController extends Controller
         return redirect('profile/{id}')->with('success', 'Data Anda telah berhasil di edit');
     }
 
-    public function gantiPassword(Request $request,$id)
+    public function gantiPassword(Request $request, $id)
     {
         $request->validate([
             'password' => 'required',
@@ -208,13 +218,12 @@ class LandingController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
             return redirect('profile/{id}')->with('success', 'Password Anda telah berhasil dirubah!');
-        }else{
+        } else {
             return redirect('profile/{id}')->with('error', 'Konfirmasi password salah!');
         }
-
     }
 
-    public function editProfilU(Request $request,$id)
+    public function editProfilU(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
@@ -222,7 +231,7 @@ class LandingController extends Controller
             'telepon' => 'required',
             'alamat' => 'required',
             'email' => 'required',
-        ],[
+        ], [
             'name.required' => 'Nama anda tidak boleh kosong!',
             'username.required' => 'Username anda tidak boleh kosong!',
             'telepon.required' => 'Nomor telepon anda tidak boleh kosong!',
@@ -257,7 +266,7 @@ class LandingController extends Controller
         return redirect('profileuser/{id}')->with('success', 'Data Anda telah berhasil di edit');
     }
 
-    public function gantiPasswordU(Request $request,$id)
+    public function gantiPasswordU(Request $request, $id)
     {
         $request->validate([
             'password' => 'required',
@@ -272,10 +281,9 @@ class LandingController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
             return redirect('profileuser/{id}')->with('success', 'Password Anda telah berhasil dirubah!');
-        }else{
+        } else {
             return redirect('profileuser/{id}')->with('error', 'Konfirmasi password salah!');
         }
-
     }
 
     public function logout(Request $request)
